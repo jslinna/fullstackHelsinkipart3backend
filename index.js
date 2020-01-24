@@ -6,7 +6,7 @@ const cors = require('cors')
 
 app.use(bodyParser.json())
 app.use(cors())
-
+app.use(express.static('build'))
 morgan.token('body', function (req, res) {
   return JSON.stringify(req.body)
 })
@@ -115,8 +115,6 @@ app.delete('/api/persons/:id', (req, res) => {
 
   res.status(204).end()
 })
-
-
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
